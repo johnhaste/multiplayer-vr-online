@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
 
 public class LoginManager : MonoBehaviourPunCallbacks
 {
+
+    public TMP_InputField PlayerNameInputName;
+
     #region Unity Methods
     // Start is called before the first frame update
     void Start()
@@ -23,6 +27,15 @@ public class LoginManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.ConnectUsingSettings();
     }
+
+    public void ConnectToPhotonServer()
+    {
+        if(PlayerNameInputName != null)
+        {
+            PhotonNetwork.NickName = PlayerNameInputName.text;
+            PhotonNetwork.ConnectUsingSettings();
+        }
+    }
     #endregion
 
     #region Photon Callback Methods
@@ -33,7 +46,7 @@ public class LoginManager : MonoBehaviourPunCallbacks
     
     public override void OnConnectedToMaster()
     {
-        print("Connected to Master Server!");
+        print("Connected to Master with player nameServer!" + PhotonNetwork.NickName);
     }
 
     #endregion
