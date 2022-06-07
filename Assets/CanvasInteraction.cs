@@ -12,7 +12,7 @@ public class CanvasInteraction : MonoBehaviour
     public void OnButton1Clicked()
     {
         //simpleUIText.text = "Button1 is clicked";
-        buton1.GetComponent<TextMeshPro>().text = "Was clicked";
+        //buton1.GetComponent<TextMeshPro>().text = "Was clicked";
     }
  
 }
