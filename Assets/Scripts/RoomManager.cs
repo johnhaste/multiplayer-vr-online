@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 /*
+* When app starts: OnJoinLobby()
+*   -Checks the available rooms
 * When you join a room : JoinRandomRoom()
 * 1-It doesn't exist: OnJoinRandomFailed() and creates a new room CreateAndJoinRoom(); -> creates a new room
 *   -The room is created with: OnCreatedRoom()
@@ -21,11 +24,19 @@ using Photon.Realtime;
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     private string mapType;
+    public TextMeshProUGUI OccupancyRateText_ForSchool;
+    public TextMeshProUGUI OccupancyRateText_ForOutdoor;
 
     void Start()
     {
         //Syncs scene to each player
         PhotonNetwork.AutomaticallySyncScene = true;
+
+        //Check if it's connected
+        if(PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.JoinLobby();
+        }
     }
 
     #region UI Callback Methods
@@ -97,12 +108,43 @@ public class RoomManager : MonoBehaviourPunCallbacks
         //Alerts when a new player entered the room
         print(newPlayer.NickName +" joined the room. Player count: " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
+
+    //It's called when a room is created or modified
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        if(roomList.Count == 0)
+        {
+            OccupancyRateText_ForSchool.text = 0 + " / " + 20;
+            OccupancyRateText_ForOutdoor.text = 0 + " / " + 20;
+        }
+
+        //Goes through each room created
+        foreach(RoomInfo room in roomList)
+        {
+            print(room.Name);
+            if(room.Name.Contains(MultiplayerVRConstants.MAP_TYPE_VALUE_OUTDOOR))
+            {
+                print("Room: Outdoor. Player count:" + room.PlayerCount);
+                OccupancyRateText_ForOutdoor.text = room.PlayerCount + "/" + 20;
+            }
+            else if(room.Name.Contains(MultiplayerVRConstants.MAP_TYPE_VALUE_SCHOOL))
+            {
+                print("Room: School. Player count:" + room.PlayerCount);
+                OccupancyRateText_ForSchool.text = room.PlayerCount + "/" + 20;
+            }
+        }
+    }
+
+    public override void OnJoinedLobby()
+    {
+        print("Joined the Lobby");
+    }
     #endregion
 
     #region Private Methods
     private void CreateAndJoinRoom()
     {
-        string randomName = "Room_" + Random.Range(0,10000);
+        string randomName = "Room_" + mapType + Random.Range(0,10000);
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 20;
 
