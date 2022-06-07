@@ -4,9 +4,29 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+/*
+* When you join a room : JoinRandomRoom()
+* 1-It doesn't exist: OnJoinRandomFailed() and creates a new room CreateAndJoinRoom(); -> creates a new room
+*   -The room is created with: OnCreatedRoom()
+*   -Player enters the room: OnPlayerEnteredRoom()
+* 2-It exists: OnJoinedRoom() -> enters an existing room
+*   -Player enters the room: OnPlayerEnteredRoom()
+*
+* When you click to enter a specific map
+* 1-OnEnterButtonClickedOutdoor - PhotonNetwork.JoinRandomRoom -> try to join Outdoor room
+* 2-OnEnterButtonClickedSchool -  PhotonNetwork.JoinRandomRoom -> try to join School room
+*
+*/
+
 public class RoomManager : MonoBehaviourPunCallbacks
 {
     private string mapType;
+
+    void Start()
+    {
+        //Syncs scene to each player
+        PhotonNetwork.AutomaticallySyncScene = true;
+    }
 
     #region UI Callback Methods
     public void JoinRandomRoom()
@@ -34,7 +54,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     #region Photon Callback Methods
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        base.OnJoinRandomFailed(returnCode, message);
+        print("There's no room yet");
         CreateAndJoinRoom();
     }
 
@@ -52,10 +72,21 @@ public class RoomManager : MonoBehaviourPunCallbacks
         if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(MultiplayerVRConstants.MAP_TYPE_KEY))
         {
             object mapType;
+
             //Prints the room the player is at
             if(PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(MultiplayerVRConstants.MAP_TYPE_KEY, out mapType))
             {
                 print("Joined the room with the map:" + (string) mapType);
+                if((string) mapType == MultiplayerVRConstants.MAP_TYPE_VALUE_SCHOOL)
+                {
+                    //Load school
+                    PhotonNetwork.LoadLevel("World_School");
+                }
+                else if((string) mapType == MultiplayerVRConstants.MAP_TYPE_VALUE_OUTDOOR )
+                {
+                    //Load outdoor
+                    PhotonNetwork.LoadLevel("World_Outdoor");
+                }
             }
         }
     
@@ -63,11 +94,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        //Alerts when a new player entered the room
         print(newPlayer.NickName +" joined the room. Player count: " + PhotonNetwork.CurrentRoom.PlayerCount);
     }
     #endregion
 
-    #region Private Methords
+    #region Private Methods
     private void CreateAndJoinRoom()
     {
         string randomName = "Room_" + Random.Range(0,10000);
