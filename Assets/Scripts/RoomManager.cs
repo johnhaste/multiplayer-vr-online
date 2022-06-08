@@ -6,8 +6,10 @@ using Photon.Realtime;
 using TMPro;
 
 /*
-* When app starts: OnJoinLobby()
-*   -Checks the available rooms
+* When app starts: checks if it's connected and ready
+*   -If it is not, connect and then JoinLobby()
+*   -If it is connected already, just JoinLobby()
+*
 * When you join a room : JoinRandomRoom()
 * 1-It doesn't exist: OnJoinRandomFailed() and creates a new room CreateAndJoinRoom(); -> creates a new room
 *   -The room is created with: OnCreatedRoom()
@@ -33,7 +35,11 @@ public class RoomManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
 
         //Check if it's connected
-        if(PhotonNetwork.IsConnectedAndReady)
+        if(!PhotonNetwork.IsConnectedAndReady)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        else
         {
             PhotonNetwork.JoinLobby();
         }
@@ -67,6 +73,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         print("There's no room yet");
         CreateAndJoinRoom();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        print("Connected to servers again");
+        PhotonNetwork.JoinLobby();
     }
 
     public override void OnCreatedRoom()
