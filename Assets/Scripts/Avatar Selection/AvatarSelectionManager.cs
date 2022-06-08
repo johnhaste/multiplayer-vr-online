@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class AvatarSelectionManager : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class AvatarSelectionManager : MonoBehaviour
         ////Initially, de-activating the Avatar Selection Platform.
         //AvatarSelectionPlatformGameobject.SetActive(false);
 
+        //Checks the avatar selected for the player
         object storedAvatarSelectionNumber;
         if (PhotonNetwork.LocalPlayer.CustomProperties.TryGetValue(MultiplayerVRConstants.AVATAR_SELECTION_NUMBER, out storedAvatarSelectionNumber))
         {
