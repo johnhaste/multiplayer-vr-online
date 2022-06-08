@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
 {
@@ -21,6 +22,18 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
             //Change their layers so the local player won't see their own body
             SetLayerRecursively(AvatarHeadGameObject, 6 );
             SetLayerRecursively(AvatarHeadGameObject, 7 );
+
+            //Checks for Teleportation areas
+            TeleportationArea[] teleportationAreas = GameObject.FindObjectsOfType<TeleportationArea>();
+            if(teleportationAreas.Length > 0)
+            {
+                print("Found " + teleportationAreas.Length + " teleportation area.");
+                foreach(var item in teleportationAreas)
+                {
+                    //Adds the teleportation area to the local XR Rig Provider
+                    item.teleportationProvider = LocalXRRigGameobject.GetComponent<TeleportationProvider>();
+                }
+            }
             
         }else
         {
