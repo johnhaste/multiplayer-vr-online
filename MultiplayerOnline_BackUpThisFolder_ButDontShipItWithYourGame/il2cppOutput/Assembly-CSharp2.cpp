@@ -9686,6 +9686,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviourPunCallbacks__ctor_m25DE2B1
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR PhotonView_t43F3D22FF3D00F7824E82D741D70F9CB55642E6B* MonoBehaviourPun_get_photonView_m0DBC40909E2E885D7FA3D40157A189FADEE98A67 (MonoBehaviourPun_t64DD82CBA1C47A70448DAB2263AB90A4411621BD* __this, const RuntimeMethod* method) ;
 // System.Boolean Photon.Pun.PhotonView::get_IsMine()
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool PhotonView_get_IsMine_mE26FB70A42C0D92C66536B45D7A7F8F491C8D648_inline (PhotonView_t43F3D22FF3D00F7824E82D741D70F9CB55642E6B* __this, const RuntimeMethod* method) ;
+// System.Void PlayerNetworkSetup::SetLayerRecursively(UnityEngine.GameObject,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerNetworkSetup_SetLayerRecursively_m3BFCC3138678A8C77B3C82B81EC2DDC1E67E4975 (PlayerNetworkSetup_t013C14A4B35D61A970CC448CBD8113FE13315576* __this, GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___go0, int32_t ___layerNumber1, const RuntimeMethod* method) ;
 // T[] UnityEngine.GameObject::GetComponentsInChildren<UnityEngine.Transform>(System.Boolean)
 inline TransformU5BU5D_tBB9C5F5686CAE82E3D97D43DF0F3D68ABF75EC24* GameObject_GetComponentsInChildren_TisTransform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1_m651EF7519F4E454086FDD6F8E064BF5F51D2FD64 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, bool ___includeInactive0, const RuntimeMethod* method)
 {
@@ -18773,7 +18775,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerNetworkSetup_Start_m5D91C5DFCCA0A4
 		bool L_2 = V_0;
 		if (!L_2)
 		{
-			goto IL_0021;
+			goto IL_003d;
 		}
 	}
 	{
@@ -18781,18 +18783,30 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerNetworkSetup_Start_m5D91C5DFCCA0A4
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_3 = __this->___LocalXRRigGameobject_5;
 		NullCheck(L_3);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_3, (bool)1, NULL);
-		goto IL_0030;
+		// SetLayerRecursively(AvatarHeadGameObject, 6 );
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___AvatarHeadGameObject_6;
+		PlayerNetworkSetup_SetLayerRecursively_m3BFCC3138678A8C77B3C82B81EC2DDC1E67E4975(__this, L_4, 6, NULL);
+		// SetLayerRecursively(AvatarHeadGameObject, 7 );
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_5 = __this->___AvatarHeadGameObject_6;
+		PlayerNetworkSetup_SetLayerRecursively_m3BFCC3138678A8C77B3C82B81EC2DDC1E67E4975(__this, L_5, 7, NULL);
+		goto IL_0068;
 	}
 
-IL_0021:
+IL_003d:
 	{
 		// LocalXRRigGameobject.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_4 = __this->___LocalXRRigGameobject_5;
-		NullCheck(L_4);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_4, (bool)0, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___LocalXRRigGameobject_5;
+		NullCheck(L_6);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)0, NULL);
+		// SetLayerRecursively(AvatarBodyGameObject, 0 );
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___AvatarBodyGameObject_7;
+		PlayerNetworkSetup_SetLayerRecursively_m3BFCC3138678A8C77B3C82B81EC2DDC1E67E4975(__this, L_7, 0, NULL);
+		// SetLayerRecursively(AvatarHeadGameObject, 0 );
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = __this->___AvatarHeadGameObject_6;
+		PlayerNetworkSetup_SetLayerRecursively_m3BFCC3138678A8C77B3C82B81EC2DDC1E67E4975(__this, L_8, 0, NULL);
 	}
 
-IL_0030:
+IL_0068:
 	{
 		// }
 		return;

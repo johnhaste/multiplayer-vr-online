@@ -25,8 +25,6 @@ public class UI_InteractionController : MonoBehaviour
     [SerializeField]
     Vector3 positionOffsetForUICanvasGameobject;
 
-   
-
     private void OnEnable()
     {
         inputActionReference_UISwitcher.action.performed += ActivateUIMode;

@@ -33,12 +33,6 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SetLayerRecursively(GameObject go, int layerNumber)
     {
         if (go == null) return;

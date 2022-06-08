@@ -2224,7 +2224,7 @@ MonoBehaviour:
   UIController: {fileID: 2136530396519561416}
   BaseController: {fileID: 334063865399162822}
   inputActionReference_UISwitcher: {fileID: 6791507806993997486, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  UICanvasGameobject: {fileID: 0}
+  UICanvasGameobject: {fileID: 3353666616870502134, guid: 379aea1ba0861ab4d9fb240d15a5e6bc, type: 3}
   positionOffsetForUICanvasGameobject: {x: 0, y: 0, z: 0}
 --- !u!1001 &1877480923365004560
 PrefabInstance:
