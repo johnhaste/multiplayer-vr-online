@@ -20,7 +20,7 @@ public class UI_InteractionController : MonoBehaviour
     bool isUICanvasActive = false;
 
     [SerializeField]
-    GameObject UICanvasGameobject;
+    GameObject UIGameobjects;
 
     [SerializeField]
     Vector3 positionOffsetForUICanvasGameobject;
@@ -38,7 +38,7 @@ public class UI_InteractionController : MonoBehaviour
     private void Start()
     {
         //Deactivating UI Canvas Gameobject by default
-        UICanvasGameobject.SetActive(false);
+        UIGameobjects.SetActive(false);
 
         //Deactivating UI Controller by default
         UIController.GetComponent<XRRayInteractor>().enabled = false;
@@ -64,14 +64,14 @@ public class UI_InteractionController : MonoBehaviour
             BaseController.GetComponent<XRDirectInteractor>().enabled = false;
 
             //Adjusting the transform of the UI Canvas Gameobject according to the VR Player transform
-            Vector3 positionVec = new Vector3(UIController.transform.position.x + 2f, positionOffsetForUICanvasGameobject.y + 1f, UIController.transform.position.z);
+            Vector3 positionVec = new Vector3(UIController.transform.position.x, positionOffsetForUICanvasGameobject.y + 1f, UIController.transform.position.z + 2f);
             Vector3 directionVec = UIController.transform.forward;
             directionVec.y = 0f;
-            UICanvasGameobject.transform.position = positionVec + positionOffsetForUICanvasGameobject.magnitude * directionVec;
-            UICanvasGameobject.transform.rotation = Quaternion.LookRotation(directionVec);
+            UIGameobjects.transform.position = positionVec + positionOffsetForUICanvasGameobject.magnitude * directionVec;
+            UIGameobjects.transform.rotation = Quaternion.LookRotation(directionVec);
 
             //Activating the UI Canvas Gameobject
-            UICanvasGameobject.SetActive(true);
+            UIGameobjects.SetActive(true);
         }
         else
         {
@@ -85,7 +85,7 @@ public class UI_InteractionController : MonoBehaviour
             BaseController.GetComponent<XRDirectInteractor>().enabled = true;
 
             //De-Activating the UI Canvas Gameobject
-            UICanvasGameobject.SetActive(false);
+            UIGameobjects.SetActive(false);
         }
 
     }
