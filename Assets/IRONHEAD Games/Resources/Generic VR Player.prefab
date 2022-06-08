@@ -1883,6 +1883,8 @@ GameObject:
   - component: {fileID: 3597294022149665314}
   - component: {fileID: 3251227458533158127}
   - component: {fileID: 2395642401564384654}
+  - component: {fileID: 6175709907564092886}
+  - component: {fileID: 8953795126740577911}
   m_Layer: 0
   m_Name: Generic VR Player
   m_TagString: Untagged
@@ -1924,8 +1926,9 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 8953795126740577911}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1944,6 +1947,40 @@ MonoBehaviour:
   LocalXRRigGameobject: {fileID: 572058774424983401}
   AvatarHeadGameObject: {fileID: 32672891308629317}
   AvatarBodyGameObject: {fileID: 5020051760506722767}
+--- !u!114 &6175709907564092886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122829052827839440}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &8953795126740577911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122829052827839440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca354d8bfa48c249a02172bc078b3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generalVRPlayerTransform: {fileID: 3597294022149665314}
+  mainAvatarTransform: {fileID: 8116373456169980937}
+  headTransform: {fileID: 8363208308681010493}
+  bodyTransform: {fileID: 8818727426842841945}
+  leftHandTransform: {fileID: 5890885935615394565}
+  rightHandTransform: {fileID: 7079059581973668958}
 --- !u!1 &7604150798242058490
 GameObject:
   m_ObjectHideFlags: 0
