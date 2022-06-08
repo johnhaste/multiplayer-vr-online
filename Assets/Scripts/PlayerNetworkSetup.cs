@@ -28,7 +28,7 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
             LocalXRRigGameobject.SetActive(false);
 
             //Change their layers so the local player can see other people's bodies
-            SetLayerRecursively(AvatarHeadGameObject, 0 );
+            SetLayerRecursively(AvatarBodyGameObject, 0 );
             SetLayerRecursively(AvatarHeadGameObject, 0 );
         }
     }
