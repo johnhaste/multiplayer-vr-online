@@ -327,7 +327,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4033721784319040074}
-  - {fileID: 8116373456169980937}
   m_Father: {fileID: 3597294022149665314}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1832,6 +1831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3597294022149665314}
   - component: {fileID: 3251227458533158127}
+  - component: {fileID: 2395642401564384654}
   m_Layer: 0
   m_Name: Generic VR Player
   m_TagString: Untagged
@@ -1852,6 +1852,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8664124426864330372}
+  - {fileID: 8116373456169980937}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1877,6 +1878,21 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2395642401564384654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122829052827839440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87cede7f38652946aaa8c00cf2b6afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalXRRigGameobject: {fileID: 572058774424983401}
+  AvatarHeadGameObject: {fileID: 32672891308629317}
+  AvatarBodyGameObject: {fileID: 5020051760506722767}
 --- !u!1 &7604150798242058490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,7 +2231,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8664124426864330372}
+    m_TransformParent: {fileID: 3597294022149665314}
     m_Modifications:
     - target: {fileID: 435400185275737161, guid: 69edaa7f6d0367845b76420b47e4be35, type: 3}
       propertyPath: m_Layer
@@ -2295,6 +2311,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69edaa7f6d0367845b76420b47e4be35, type: 3}
+--- !u!1 &32672891308629317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1907895810234910805, guid: 69edaa7f6d0367845b76420b47e4be35, type: 3}
+  m_PrefabInstance: {fileID: 1877480923365004560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5020051760506722767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6891889006077643999, guid: 69edaa7f6d0367845b76420b47e4be35, type: 3}
+  m_PrefabInstance: {fileID: 1877480923365004560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5890885935615394565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5462452380816446997, guid: 69edaa7f6d0367845b76420b47e4be35, type: 3}
