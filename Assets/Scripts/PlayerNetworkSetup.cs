@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
 {
 
     public GameObject LocalXRRigGameobject;
+    public GameObject MainAvatarGameObject;
+
+
     public GameObject AvatarHeadGameObject;
     public GameObject AvatarBodyGameObject;
 
     public GameObject[] AvatarModelPrefabs;
+
+    public TextMeshProUGUI PlayerNameText;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +53,8 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
                 }
             }
             
+            MainAvatarGameObject.AddComponent<AudioListener>();
+
         }else
         {
             //The player is remote (disable XR Rig)
@@ -55,6 +63,11 @@ public class PlayerNetworkSetup : MonoBehaviourPunCallbacks
             //Change their layers so the local player can see other people's bodies
             SetLayerRecursively(AvatarBodyGameObject, 0 );
             SetLayerRecursively(AvatarHeadGameObject, 0 );
+        }
+
+        if(PlayerNameText != null)
+        {
+            PlayerNameText.text = photonView.Owner.NickName;
         }
     }
 

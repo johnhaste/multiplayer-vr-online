@@ -13671,6 +13671,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Marvin__cctor_mBD2EACD65EEB8248B12DCADA3
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Int16 System.Math::Abs(System.Int16)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int16_t Math_Abs_mB56E07217E53C34312EA3946ECE720C3B7EA2CE1 (int16_t ___value0, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		int16_t L_0 = ___value0;
+		if ((((int32_t)L_0) >= ((int32_t)0)))
+		{
+			goto IL_0012;
+		}
+	}
+	{
+		int16_t L_1 = ___value0;
+		___value0 = ((int16_t)((-L_1)));
+		int16_t L_2 = ___value0;
+		if ((((int32_t)L_2) >= ((int32_t)0)))
+		{
+			goto IL_0012;
+		}
+	}
+	{
+		il2cpp_codegen_runtime_class_init_inline(Math_tEB65DE7CA8B083C412C969C92981C030865486CE_il2cpp_TypeInfo_var);
+		Math_ThrowAbsOverflow_m0AA03C7836D310B2CE009AA38ED4CA513AA4B92F(NULL);
+	}
+
+IL_0012:
+	{
+		int16_t L_3 = ___value0;
+		return L_3;
+	}
+}
 // System.Int32 System.Math::Abs(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Math_Abs_m811687BCD40BA71A0C63BE0EE14B79142A683232 (int32_t ___value0, const RuntimeMethod* method) 
 {

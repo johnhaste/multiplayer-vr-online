@@ -64,7 +64,7 @@ public class UI_InteractionController : MonoBehaviour
             BaseController.GetComponent<XRDirectInteractor>().enabled = false;
 
             //Adjusting the transform of the UI Canvas Gameobject according to the VR Player transform
-            Vector3 positionVec = new Vector3(UIController.transform.position.x, positionOffsetForUICanvasGameobject.y + 1f, UIController.transform.position.z + 2f);
+            Vector3 positionVec = new Vector3(UIController.transform.position.x, positionOffsetForUICanvasGameobject.y, UIController.transform.position.z);
             Vector3 directionVec = UIController.transform.forward;
             directionVec.y = 0f;
             UIGameobjects.transform.position = positionVec + positionOffsetForUICanvasGameobject.magnitude * directionVec;

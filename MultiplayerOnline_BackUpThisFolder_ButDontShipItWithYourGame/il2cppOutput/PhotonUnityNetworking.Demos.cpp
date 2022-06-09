@@ -7575,7 +7575,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ThirdPersonUserControl_FixedUpdate_mB549
 	bool V_3 = false;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_4;
 	memset((&V_4), 0, sizeof(V_4));
-	bool V_5 = false;
 	{
 		// float h = Input.GetAxis("Horizontal");
 		float L_0;
@@ -7654,33 +7653,13 @@ IL_008e:
 
 IL_00b1:
 	{
-		// if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
-		bool L_26;
-		L_26 = Input_GetKey_m0BF0499CADC378F02B6BEE2399FB945AB929B81A(((int32_t)304), NULL);
-		V_5 = L_26;
-		bool L_27 = V_5;
-		if (!L_27)
-		{
-			goto IL_00d7;
-		}
-	}
-	{
-		// if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_28 = __this->___m_Move_7;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_29;
-		L_29 = Vector3_op_Multiply_m516FE285F5342F922C6EB3FCB33197E9017FF484_inline(L_28, (0.5f), NULL);
-		__this->___m_Move_7 = L_29;
-	}
-
-IL_00d7:
-	{
 		// m_Character.Move(m_Move, crouch, m_Jump);
-		ThirdPersonCharacter_tBE6642EAAB74FE294843A1463D3C6FF774E17267* L_30 = __this->___m_Character_4;
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_31 = __this->___m_Move_7;
-		bool L_32 = V_2;
-		bool L_33 = __this->___m_Jump_8;
-		NullCheck(L_30);
-		ThirdPersonCharacter_Move_mB257A594802476EB4DA44EF51A5953A0DA267FDB(L_30, L_31, L_32, L_33, NULL);
+		ThirdPersonCharacter_tBE6642EAAB74FE294843A1463D3C6FF774E17267* L_26 = __this->___m_Character_4;
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_27 = __this->___m_Move_7;
+		bool L_28 = V_2;
+		bool L_29 = __this->___m_Jump_8;
+		NullCheck(L_26);
+		ThirdPersonCharacter_Move_mB257A594802476EB4DA44EF51A5953A0DA267FDB(L_26, L_27, L_28, L_29, NULL);
 		// m_Jump = false;
 		__this->___m_Jump_8 = (bool)0;
 		// }
